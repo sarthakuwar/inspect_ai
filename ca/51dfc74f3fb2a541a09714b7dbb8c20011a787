@@ -1,0 +1,21 @@
+src/inspect_ai/_util/trace.py
+  s_6bd3fae6fa1c4e::t_c68a2280c80cee 153,155
+tests/util/test_trace.py
+  s_6bd3fae6fa1c4e::t_130efd9984e857 7,63-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ca51dfc74f3fb2a541a09714b7dbb8c20011a787",
+  "prompts": {},
+  "sessions": {
+    "s_6bd3fae6fa1c4e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9c194498-0947-4efd-9828-d7f4dd46bea1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "sarthakuwar <kuwarsarthak711@gmail.com>"
+    }
+  }
+}
