@@ -4,7 +4,7 @@ from collections.abc import Iterator
 from contextlib import contextmanager
 
 from inspect_ai._util.constants import TRACE
-from inspect_ai._util.trace import trace_action
+from inspect_ai._util.trace import trace_action, trace_message
 
 
 class ListHandler(logging.Handler):
@@ -60,3 +60,15 @@ def test_trace_action_preserves_exception_from_plain_worker_thread() -> None:
         and getattr(record, "error_type", None) == "RuntimeError"
         for record in records
     )
+
+
+def test_trace_message_formats_args_and_passes_kwargs_to_logger() -> None:
+    logger = logging.getLogger("inspect_ai.tests.trace_message")
+
+    with capture_logger_records(logger) as records:
+        trace_message(logger, "Tool", "called %s", "x", extra={"tool": "x"})
+
+    assert len(records) == 1
+    assert records[0].levelno == TRACE
+    assert records[0].getMessage() == "[Tool] called x"
+    assert getattr(records[0], "tool") == "x"

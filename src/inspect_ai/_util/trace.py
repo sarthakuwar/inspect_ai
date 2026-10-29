@@ -150,9 +150,9 @@ def trace_message(
     Args:
        logger (Logger): Logger to use for tracing (e.g. from `getLogger(__name__)`)
        category (str): Category of trace message.
-       message (str): Trace message (can be a format string w/ args or kwargs)
+       message (str): Trace message (can be a %-style format string w/ args)
        *args (Any): Positional arguments for `message` format string.
-       **kwargs (Any): Named args for `message` format string.
+       **kwargs (Any): Keyword arguments passed to `Logger.log()` (e.g. `extra` or `exc_info`).
     """
     logger.log(TRACE, f"[{category}] {message}", *args, **kwargs)
 
